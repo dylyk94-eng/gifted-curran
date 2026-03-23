@@ -3,6 +3,7 @@ import Link from 'next/link';
 const navItems = [
   { href: '#cities', label: 'Города' },
   { href: '#services', label: 'Услуги' },
+  { href: '#faq', label: 'Вопросы' },
   { href: '#contact', label: 'Контакты' },
 ];
 
@@ -10,81 +11,39 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="section-shell pb-10 pt-8">
-      <div className="section-inner">
-        <div className="surface-strong">
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(16rem,0.6fr)_minmax(16rem,0.7fr)]">
-            <div>
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#115e59_0%,#d97706_100%)] text-sm font-bold text-white">
-                  CE
-                </div>
-                <div>
-                  <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[rgba(17,94,89,0.84)]">
-                    Crypto Exchange
-                  </div>
-                  <div className="text-sm text-muted">Офлайн сделки и международные платежи</div>
-                </div>
-              </div>
-              <p className="mt-6 max-w-xl text-base leading-7 text-muted">
-                Спокойный сервис для тех, кому важны понятные условия, реальный контакт и
-                предсказуемый процесс без лишних обещаний.
-              </p>
-            </div>
+    <footer className="mt-10 border-t border-[rgba(73,53,35,0.08)] bg-[rgba(246,239,229,0.96)] text-[rgba(84,68,53,0.8)]">
+      <div className="mx-auto grid max-w-[74rem] gap-10 p-6 md:grid-cols-3 md:p-10">
+        <div>
+          <h2 className="text-lg font-bold text-[rgba(36,28,20,0.96)]">Криптообмен</h2>
+          <p className="mt-3 text-sm">Офлайн обмен USDT, BTC и ETH, а также переводы за рубеж по согласованию.</p>
+          <p className="mt-4 text-xs text-[rgba(84,68,53,0.62)]">© {year} Криптообмен. Все права защищены.</p>
+        </div>
 
-            <div>
-              <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[rgba(17,94,89,0.84)]">
-                Навигация
-              </div>
-              <div className="mt-5 space-y-3">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="block text-sm text-[rgba(31,26,20,0.82)] transition hover:text-[rgba(17,94,89,1)]"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-widest text-[rgba(17,94,89,0.88)]">Навигация</h3>
+          <ul className="mt-3 space-y-2 text-sm">
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="hover:text-[rgba(17,94,89,1)]">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-            <div>
-              <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[rgba(17,94,89,0.84)]">
-                Связь
-              </div>
-              <div className="mt-5 space-y-3 text-sm text-[rgba(31,26,20,0.82)]">
-                <a
-                  href="https://t.me/Crypto_u_u"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block transition hover:text-[rgba(17,94,89,1)]"
-                >
-                  Telegram: @Crypto_u_u
-                </a>
-                <a href="tel:+79999999999" className="block transition hover:text-[rgba(17,94,89,1)]">
-                  Телефон: +7 (999) 999-99-99
-                </a>
-                <a
-                  href="mailto:info@cryptoexchange.ru"
-                  className="block transition hover:text-[rgba(17,94,89,1)]"
-                >
-                  Email: info@cryptoexchange.ru
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-10 flex flex-col gap-3 border-t border-[rgba(62,43,21,0.1)] pt-6 text-sm text-muted md:flex-row md:items-center md:justify-between">
-            <p>© {year} Crypto Exchange. Все права защищены.</p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="transition hover:text-[rgba(17,94,89,1)]">
-                Политика конфиденциальности
-              </a>
-              <a href="#contact" className="transition hover:text-[rgba(17,94,89,1)]">
-                Условия работы
-              </a>
-            </div>
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-widest text-[rgba(17,94,89,0.88)]">Контакты</h3>
+          <div className="mt-3 space-y-2 text-sm">
+            <a href="https://t.me/Crypto_u_u" target="_blank" rel="noreferrer" className="block hover:text-[rgba(17,94,89,1)]">
+              Telegram: @Crypto_u_u
+            </a>
+            <a href="tel:+79999999999" className="block hover:text-[rgba(17,94,89,1)]">
+              Телефон: +7 (999) 999-99-99
+            </a>
+            <a href="mailto:info@cryptoexchange.ru" className="block hover:text-[rgba(17,94,89,1)]">
+              Почта: info@cryptoexchange.ru
+            </a>
           </div>
         </div>
       </div>

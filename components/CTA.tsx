@@ -13,8 +13,7 @@ export default function CTA() {
             Если задача понятна, не нужно читать дальше
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted">
-            Напишите в Telegram или оставьте короткую заявку. Мы быстро скажем,
-            берём ли ваш кейс в работу и какой формат будет удобнее.
+            Напишите в Telegram или оставьте заявку. Мы ответим и уточним детали.
           </p>
 
           <div className="mt-10 grid gap-4 md:grid-cols-3">

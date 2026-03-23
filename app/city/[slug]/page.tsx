@@ -1,12 +1,8 @@
 import { notFound } from 'next/navigation';
-import AnimatedBackground from '@/components/AnimatedBackground';
 import Contact from '@/components/Contact';
-import CustomCursor from '@/components/CustomCursor';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import Marquee from '@/components/Marquee';
-import ScrollProgress from '@/components/ScrollProgress';
 import Services from '@/components/Services';
 import Testimonials from '@/components/Testimonials';
 
@@ -15,7 +11,7 @@ const cities = {
     name: 'Улан-Удэ',
     title: 'Офлайн криптообмен в Улан-Удэ',
     description:
-      'Обмен USDT, BTC, ETH и других активов в понятном офлайн-формате. Подходит для разовых сделок, регулярного обмена и международных расчетов.',
+      'Обмен USDT, BTC, ETH и других активов через офис. Подходит для разовых сделок, регулярного обмена и переводов за рубеж.',
     officeLabel: 'Офис на Балтахинова, 17',
     leadCta: 'Обсудить обмен в Улан-Удэ',
     stats: {
@@ -28,7 +24,7 @@ const cities = {
     name: 'Чита',
     title: 'Криптообмен в Чите по предварительной заявке',
     description:
-      'Для клиентов из Читы организуем сделку по согласованному сценарию: заранее подтверждаем сумму, направление обмена и удобный формат связи.',
+      'Для клиентов из Читы работаем по заявке: заранее подтверждаем сумму, направление обмена и формат связи.',
     officeLabel: 'Работаем по согласованной заявке',
     leadCta: 'Оставить заявку в Чите',
     stats: {
@@ -42,33 +38,33 @@ const cities = {
 const cityBenefits = [
   {
     icon: 'Офис',
-    title: 'Понятный формат сделки',
-    description: 'До начала обмена вы знаете, где проходит встреча, какой курс зафиксирован и кто сопровождает процесс.',
+    title: 'Понятный формат',
+    description: 'До начала обмена вы знаете, где проходит встреча и на каких условиях.',
   },
   {
     icon: 'Срок',
     title: 'Быстрая коммуникация',
-    description: 'Большинство вопросов закрываем в Telegram без длинной переписки и формальных цепочек.',
+    description: 'Большинство вопросов решаем в Telegram.',
   },
   {
     icon: 'Курс',
     title: 'Прозрачные условия',
-    description: 'Сначала согласуем детали, потом проводим сделку. Без неожиданных комиссий и меняющихся вводных.',
+    description: 'Сначала согласуем детали, потом проводим сделку.',
   },
   {
     icon: 'Маршрут',
-    title: 'Поддержка нестандартных задач',
-    description: 'Если нужен не только обмен, но и международный расчет, подбираем рабочий маршрут под ваш кейс.',
+    title: 'Переводы за рубеж',
+    description: 'Если нужен перевод, сначала уточняем детали и формат.',
   },
   {
     icon: 'Связь',
-    title: 'Личный контакт',
-    description: 'Вы общаетесь не с обезличенным интерфейсом, а с менеджером, который ведет сделку до результата.',
+    title: 'Связь с менеджером',
+    description: 'Можно быстро уточнить детали и получить ответ по сделке.',
   },
   {
     icon: 'Темп',
-    title: 'Подходит для регулярных клиентов',
-    description: 'Если вы меняете криптовалюту часто, можно выстроить понятный и повторяемый формат взаимодействия.',
+    title: 'Подходит для постоянных клиентов',
+    description: 'Если вы меняете криптовалюту часто, можно быстро наладить удобный порядок работы.',
   },
 ];
 
@@ -82,13 +78,9 @@ export default function CityPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="relative">
-      <CustomCursor />
-      <AnimatedBackground />
-      <ScrollProgress />
-
       <Header />
 
-      <main id="main" className="relative z-10" tabIndex={-1}>
+      <main id="main" className="relative" tabIndex={-1}>
         <section className="section-shell pt-32 md:pt-36">
           <div className="section-inner">
             <div className="surface-strong fade-in max-w-5xl">
@@ -119,13 +111,11 @@ export default function CityPage({ params }: { params: { slug: string } }) {
           </div>
         </section>
 
-        <Marquee />
-
         <section className="section-shell py-12">
           <div className="section-inner grid gap-6 md:grid-cols-3">
             {[
               { value: city.stats.clients, label: 'Клиентов обратились повторно или по рекомендации' },
-              { value: city.stats.transactions, label: 'Сделок проведено по типовым и нестандартным направлениям' },
+              { value: city.stats.transactions, label: 'Сделок проведено по основным направлениям' },
               { value: city.stats.rating, label: 'Средняя оценка сервиса по отзывам клиентов' },
             ].map((stat, index) => (
               <div
@@ -156,8 +146,7 @@ export default function CityPage({ params }: { params: { slug: string } }) {
                 Почему клиентам подходит такой формат работы
               </h2>
               <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">
-                На странице города собраны ключевые преимущества: понятный процесс,
-                личный контакт и поддержка по нестандартным запросам.
+                Коротко о том, как проходит работа и почему такой формат удобен.
               </p>
             </div>
 
@@ -193,8 +182,7 @@ export default function CityPage({ params }: { params: { slug: string } }) {
                 {city.leadCta}
               </h3>
               <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted">
-                Напишите в Telegram или отправьте форму. Дальше мы подскажем удобный формат,
-                согласуем детали и проведем сделку без лишней суеты.
+                Напишите в Telegram или отправьте форму. Дальше согласуем детали и проведем сделку.
               </p>
               <a href="#contact" className="btn-primary mt-8">
                 Перейти к заявке

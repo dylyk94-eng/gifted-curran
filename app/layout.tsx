@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Crypto Exchange | Офлайн криптообмен в Улан-Удэ и Чите',
+  title: 'Криптообмен | Улан-Удэ и Чита',
   description:
-    'Офлайн обмен USDT, BTC и ETH, международные платежи и сопровождение сделки в Улан-Удэ и Чите.',
+    'Офлайн обмен USDT, BTC и ETH, переводы за рубеж и согласование сделки в Улан-Удэ и Чите.',
   keywords: [
     'криптообмен',
     'USDT',
@@ -14,11 +14,11 @@ export const metadata: Metadata = {
     'Чита',
     'международные платежи',
   ],
-  authors: [{ name: 'Crypto Exchange' }],
+  authors: [{ name: 'Криптообмен' }],
   openGraph: {
-    title: 'Crypto Exchange | Офлайн криптообмен',
+    title: 'Криптообмен | Офлайн обмен криптовалюты',
     description:
-      'Офлайн обмен криптовалюты и международные расчеты с личным сопровождением.',
+      'Офлайн обмен криптовалюты и переводы за рубеж в Улан-Удэ и Чите.',
     type: 'website',
   },
 };

@@ -7,6 +7,7 @@ const navItems = [
   { href: '#cities', label: 'Города' },
   { href: '#services', label: 'Услуги' },
   { href: '#contact', label: 'Контакты' },
+  { href: '#faq', label: 'Вопросы' },
 ];
 
 export default function Header() {
@@ -14,7 +15,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 18);
+    const onScroll = () => setIsScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -28,33 +29,26 @@ export default function Header() {
   }, [isMobileMenuOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-[rgba(73,53,35,0.08)] bg-[rgba(248,243,235,0.78)] backdrop-blur-xl">
       <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-5 py-3 transition duration-300 ${
-          isScrolled
-            ? 'bg-[rgba(255,252,247,0.92)] shadow-[0_18px_40px_rgba(68,42,14,0.12)] backdrop-blur'
-            : 'bg-[rgba(255,252,247,0.7)] backdrop-blur'
-        }`}
-        style={{ borderColor: 'rgba(62, 43, 21, 0.12)' }}
+        className={`mx-auto flex max-w-[74rem] items-center justify-between px-4 py-4 transition md:px-8 ${isScrolled ? 'shadow-[0_16px_36px_rgba(77,57,37,0.08)]' : ''}`}
       >
         <Link href="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,#115e59_0%,#d97706_100%)] text-sm font-bold text-white">
-            CE
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,#115e59,#c67d1f)] text-base font-bold text-white shadow-[0_12px_28px_rgba(17,94,89,0.22)]">
+            К
           </div>
           <div>
-            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[rgba(17,94,89,0.84)]">
-              Crypto Exchange
-            </div>
-            <div className="text-xs text-[rgba(106,90,73,0.84)]">Офлайн обмен и сопровождение</div>
+            <p className="text-sm font-black text-[rgba(36,28,20,0.96)]">Криптообмен</p>
+            <p className="text-xs text-[rgba(84,68,53,0.72)]">Офлайн обмен и переводы</p>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Основная навигация">
+        <nav className="hidden items-center gap-2 rounded-full border border-[rgba(73,53,35,0.08)] bg-[rgba(255,255,255,0.42)] p-1.5 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-[rgba(31,26,20,0.78)] transition hover:text-[rgba(17,94,89,1)]"
+              className="rounded-full px-4 py-2 text-sm font-medium text-[rgba(36,28,20,0.74)] transition hover:bg-[rgba(255,255,255,0.7)] hover:text-[rgba(17,94,89,1)]"
             >
               {item.label}
             </Link>
@@ -62,81 +56,42 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <a
-            href="https://t.me/Crypto_u_u"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-          >
+          <a href="https://t.me/Crypto_u_u" target="_blank" rel="noreferrer" className="btn-primary">
             Написать в Telegram
           </a>
         </div>
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full border md:hidden"
-          style={{ borderColor: 'rgba(62, 43, 21, 0.14)' }}
-          onClick={() => setIsMobileMenuOpen((open) => !open)}
-          aria-expanded={isMobileMenuOpen}
+          className="relative block rounded-full border border-[rgba(73,53,35,0.14)] bg-[rgba(255,255,255,0.5)] p-2 md:hidden"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
+          aria-expanded={isMobileMenuOpen}
         >
-          <span className="relative h-4 w-5">
-            <span
-              className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-[rgba(31,26,20,0.88)] transition ${
-                isMobileMenuOpen ? 'translate-y-[7px] rotate-45' : ''
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-[7px] h-0.5 w-5 rounded-full bg-[rgba(31,26,20,0.88)] transition ${
-                isMobileMenuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`absolute left-0 top-[14px] h-0.5 w-5 rounded-full bg-[rgba(31,26,20,0.88)] transition ${
-                isMobileMenuOpen ? '-translate-y-[7px] -rotate-45' : ''
-              }`}
-            />
-          </span>
+          <span className="block h-0.5 w-5 bg-[rgba(36,28,20,0.88)]" />
+          <span className="mt-1 block h-0.5 w-5 bg-[rgba(36,28,20,0.88)]" />
+          <span className="mt-1 block h-0.5 w-5 bg-[rgba(36,28,20,0.88)]" />
         </button>
       </div>
 
       <div
-        className={`fixed inset-0 z-40 bg-[rgba(31,26,20,0.18)] backdrop-blur-sm transition md:hidden ${
-          isMobileMenuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-        }`}
-        onClick={() => setIsMobileMenuOpen(false)}
+        className={`fixed inset-x-0 top-full z-40 border-b border-[rgba(73,53,35,0.08)] bg-[rgba(248,243,235,0.98)] p-4 transition-all duration-300 md:hidden ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-2 opacity-0'}`}
       >
-        <nav
-          className={`absolute right-4 top-20 w-[min(22rem,calc(100%-2rem))] rounded-[28px] border bg-[rgba(255,252,247,0.98)] p-6 shadow-[0_24px_48px_rgba(68,42,14,0.16)] transition ${
-            isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'
-          }`}
-          style={{ borderColor: 'rgba(62, 43, 21, 0.12)' }}
-          onClick={(event) => event.stopPropagation()}
-        >
-          <div className="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-[rgba(17,94,89,0.84)]">
-            Навигация
-          </div>
-          <div className="space-y-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block rounded-2xl px-4 py-3 text-base font-medium text-[rgba(31,26,20,0.88)] transition hover:bg-[rgba(15,118,110,0.08)]"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-          <a
-            href="https://t.me/Crypto_u_u"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary mt-6 w-full"
-          >
+        <div className="space-y-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="block rounded-2xl border border-transparent bg-[rgba(255,255,255,0.35)] px-4 py-3 text-sm font-medium text-[rgba(36,28,20,0.82)] hover:border-[rgba(73,53,35,0.08)] hover:bg-[rgba(255,255,255,0.65)]"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a href="https://t.me/Crypto_u_u" target="_blank" rel="noreferrer" className="btn-primary block text-center">
             Написать в Telegram
           </a>
-        </nav>
+        </div>
       </div>
     </header>
   );

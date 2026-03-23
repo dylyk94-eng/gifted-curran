@@ -129,7 +129,7 @@ export default function Contact() {
             Контакт и заявка
           </div>
           <h2 className="max-w-3xl text-4xl font-semibold leading-tight text-[rgba(31,26,20,0.95)] md:text-5xl">
-            Если нужно обсудить сделку, оставьте контакты или сразу напишите в Telegram
+            Оставьте заявку или напишите в Telegram
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">
             Оставьте основные данные, и мы свяжемся с вами.
@@ -143,11 +143,10 @@ export default function Contact() {
                 Канал связи
               </div>
               <h3 className="mt-3 text-3xl font-semibold text-[rgba(31,26,20,0.95)]">
-                Самый быстрый способ начать
+                Быстрее всего через Telegram
               </h3>
               <p className="mt-4 text-base leading-7 text-muted">
-                Напишите в Telegram, если хотите согласовать курс, сумму или формат встречи до
-                отправки формы.
+                Если хотите сразу обсудить сумму, валюту или формат сделки, напишите в Telegram.
               </p>
               <a
                 href="https://t.me/Crypto_u_u"
@@ -247,6 +246,9 @@ export default function Contact() {
                   <option value="USDT">USDT</option>
                   <option value="BTC">BTC</option>
                   <option value="ETH">ETH</option>
+                  <option value="LTC">LTC</option>
+                  <option value="TRX">TRX</option>
+                  <option value="BNB">BNB</option>
                   <option value="SOL">SOL</option>
                   <option value="Другое">Другое</option>
                 </select>
