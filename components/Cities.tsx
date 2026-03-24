@@ -9,7 +9,7 @@ const cities = [
     description: 'Здесь проводим обмен, консультации и часть международных переводов.',
     notes: ['Офис', 'Быстрые сделки', 'Понятные условия'],
     href: '/city/ulan-ude',
-    image: '/offices/ulan-ude-main.png',
+    image: '/offices/ulan-ude-main.jpg',
   },
   {
     id: 'chita',
@@ -18,7 +18,7 @@ const cities = [
     description: 'Работаем по заявке и заранее согласуем детали.',
     notes: ['По заявке', 'Связь с менеджером', 'Удобный формат'],
     href: '/city/chita',
-    image: '/offices/chita-main.png',
+    image: '/offices/chita-main.jpg',
   },
 ];
 
