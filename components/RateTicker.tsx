@@ -54,7 +54,7 @@ export default function RateTicker() {
   ));
 
   return (
-    <div className="ticker-bar">
+    <div className="ticker-bar hidden md:block">
       <div className="ticker-track">
         <div className="ticker-content">{items}{items}{items}{items}</div>
       </div>

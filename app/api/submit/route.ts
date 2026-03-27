@@ -3,8 +3,14 @@ import { z } from 'zod';
 import { rateLimit } from '@/lib/rate-limit';
 import logger from '@/lib/logger';
 
+const DIRECTION_LABELS: Record<string, string> = {
+  sell: 'Продать крипту за рубли',
+  buy: 'Купить крипту за рубли',
+  transfer: 'Международный перевод',
+};
+
 const submitSchema = z.object({
-  city: z.string().min(1).max(100),
+  direction: z.string().min(1).max(100),
   name: z.string().min(1, 'Укажите имя').max(100),
   phone: z
     .string()
@@ -55,16 +61,17 @@ export async function POST(request: NextRequest) {
 
   const parsed = submitSchema.safeParse(body);
   if (!parsed.success) {
-    const firstError = parsed.error.errors[0]?.message ?? 'Ошибка валидации.';
+    const issues = 'issues' in parsed.error ? parsed.error.issues : (parsed.error as { errors?: { message: string }[] }).errors;
+    const firstError = issues?.[0]?.message ?? 'Ошибка валидации.';
     return NextResponse.json({ error: firstError }, { status: 400 });
   }
 
-  const { city, name, phone, telegram, currency, amount, message } = parsed.data;
+  const { direction, name, phone, telegram, currency, amount, message } = parsed.data;
 
   const telegramMessage = [
     'Новая заявка с сайта',
     '',
-    `Город: ${city}`,
+    `Направление: ${DIRECTION_LABELS[direction] ?? direction}`,
     `Имя: ${name}`,
     `Телефон: ${phone}`,
     `Telegram: ${telegram ?? 'Не указан'}`,
@@ -97,9 +104,9 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      logger.info({ city, name, currency, amount }, 'Lead submitted via Telegram');
+      logger.info({ direction, name, currency, amount }, 'Lead submitted via Telegram');
     } else {
-      logger.warn({ city, name, currency, amount }, 'Lead received in demo mode (Telegram not configured)');
+      logger.warn({ direction, name, currency, amount }, 'Lead received in demo mode (Telegram not configured)');
     }
 
     return NextResponse.json({ success: true, demo: !isConfigured });

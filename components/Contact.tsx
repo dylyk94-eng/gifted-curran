@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 
 interface FormData {
-  city: string;
+  direction: string;
   name: string;
   phone: string;
   telegram: string;
@@ -29,7 +29,7 @@ const offices = [
 
 export default function Contact() {
   const [formData, setFormData] = useState<FormData>({
-    city: 'Улан-Удэ',
+    direction: 'sell',
     name: '',
     phone: '',
     telegram: '',
@@ -94,7 +94,7 @@ export default function Contact() {
         setSubmitStatus(result.demo ? 'demo' : 'success');
         formRef.current?.reset();
         setFormData({
-          city: 'Улан-Удэ',
+          direction: 'sell',
           name: '',
           phone: '',
           telegram: '',
@@ -211,17 +211,19 @@ export default function Contact() {
 
             <form ref={formRef} onSubmit={handleSubmit} className="grid gap-5 md:grid-cols-2">
               <div className="md:col-span-1">
-                <label htmlFor="city" className="field-label">
-                  Город
+                <label htmlFor="direction" className="field-label">
+                  Направление
                 </label>
                 <select
-                  id="city"
-                  name="city"
-                  value={formData.city}
+                  id="direction"
+                  name="direction"
+                  value={formData.direction}
                   onChange={handleChange}
                   className="input-base"
                 >
-                  <option value="Улан-Удэ">Улан-Удэ</option>
+                  <option value="sell">Продать крипту за рубли</option>
+                  <option value="buy">Купить крипту за рубли</option>
+                  <option value="transfer">Международный перевод</option>
                 </select>
               </div>
 
@@ -312,16 +314,15 @@ export default function Contact() {
 
               <div className="md:col-span-2">
                 <label htmlFor="message" className="field-label">
-                  Комментарий
+                  Комментарий <span className="font-normal text-muted">(необязательно)</span>
                 </label>
-                <textarea
+                <input
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows={4}
-                  className="input-base resize-none"
-                  placeholder="Можно коротко описать задачу или удобное время для связи"
+                  className="input-base"
+                  placeholder="Удобное время или дополнительные детали"
                 />
               </div>
 

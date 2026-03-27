@@ -38,7 +38,7 @@ function AnimatedResult({ value, suffix, decimals }: { value: number; suffix: st
 export default function Calculator() {
   const [rates, setRates] = useState<Rate[]>([]);
   const [selectedSymbol, setSelectedSymbol] = useState('USDT');
-  const [cryptoAmount, setCryptoAmount] = useState('1');
+  const [cryptoAmount, setCryptoAmount] = useState('1000');
   const [rubAmount, setRubAmount] = useState('');
   const [activeField, setActiveField] = useState<'crypto' | 'rub'>('crypto');
   const [isLoading, setIsLoading] = useState(true);
@@ -146,6 +146,27 @@ export default function Calculator() {
                   className="input-base"
                   placeholder="0"
                 />
+              </div>
+
+              <div className="flex items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (activeField === 'crypto') {
+                      setActiveField('rub');
+                      handleRubChange(rubAmount);
+                    } else {
+                      setActiveField('crypto');
+                      handleCryptoChange(cryptoAmount);
+                    }
+                  }}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(73,53,35,0.12)] bg-[rgba(255,255,255,0.7)] text-muted transition hover:border-[rgba(15,118,110,0.3)] hover:text-[rgba(17,94,89,0.9)]"
+                  aria-label="Поменять направление"
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                  </svg>
+                </button>
               </div>
 
               <div>

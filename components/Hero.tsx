@@ -3,6 +3,12 @@
 import Link from 'next/link';
 import { useRevealChildren } from '@/hooks/useReveal';
 
+const heroMetrics = [
+  { number: '500+', label: 'сделок проведено' },
+  { number: '2 года', label: 'на рынке' },
+  { number: '15 мин', label: 'средний обмен' },
+];
+
 const heroFacts = [
   { label: 'Формат', value: 'Личная встреча в офисе, без посредников' },
   { label: 'Скорость', value: 'Обмен от 15 минут, курс фиксируем заранее' },
@@ -15,7 +21,7 @@ export default function Hero() {
   const factsRef = useRevealChildren<HTMLDivElement>({ staggerMs: 100 });
 
   return (
-    <section className="section-shell pt-40 md:pt-44">
+    <section className="section-shell pt-32 md:pt-44">
       <div className="section-inner">
         <div className="surface-accent reveal overflow-hidden p-8 md:p-10 relative">
           <div className="hero-blob" />
@@ -36,19 +42,28 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="#contact" className="btn-primary btn-glow">
-                Оставить заявку
+              <a href="https://t.me/Crypto_u_u" target="_blank" rel="noopener noreferrer" className="btn-primary btn-glow">
+                Написать в Telegram
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
-              <a href="https://t.me/Crypto_u_u" target="_blank" rel="noopener noreferrer" className="btn-secondary">
-                Написать в Telegram
               </a>
+              <Link href="#contact" className="btn-secondary">
+                Оставить заявку
+              </Link>
             </div>
           </div>
 
-          <div className="section-divider mt-12" />
+          <div className="mt-10 flex flex-wrap gap-8 md:gap-12">
+            {heroMetrics.map((m) => (
+              <div key={m.label} className="text-center">
+                <div className="text-3xl font-bold text-[rgba(17,94,89,0.95)] md:text-4xl">{m.number}</div>
+                <div className="mt-1 text-sm text-muted">{m.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="section-divider mt-10" />
 
           <div className="mt-8 grid gap-4 lg:grid-cols-[minmax(0,1fr)_18rem]">
             <div ref={factsRef} className="grid gap-4 md:grid-cols-3">

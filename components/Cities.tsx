@@ -10,7 +10,7 @@ export default function Cities() {
   const city = cities[0];
 
   return (
-    <section id="cities" className="section-shell section-tint">
+    <section id="office" className="section-shell section-tint">
       <div className="section-inner">
         <div className="section-head reveal">
           <div className="section-kicker">

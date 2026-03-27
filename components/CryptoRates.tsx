@@ -180,17 +180,20 @@ export default function CryptoRates() {
                     </div>
                     <h3 className="mt-2 text-2xl font-semibold text-[rgba(31,26,20,0.95)]">{rate.label}</h3>
                   </div>
-                  <div className="rounded-full bg-[rgba(15,118,110,0.1)] px-3 py-1 text-xs font-semibold text-[rgba(17,94,89,0.92)]">
-                    от +{rate.markup}%
+                  <div className="rounded-full bg-[rgba(198,125,31,0.1)] px-3 py-1 text-xs font-semibold text-[rgba(168,105,16,0.88)]">
+                    наценка {rate.markup}%
                   </div>
                 </div>
 
-                <div className="mt-6 text-3xl font-semibold text-[rgba(31,26,20,0.95)]">
-                  <AnimatedPrice value={rate.from} loading={isLoading} />
-                </div>
-
-                <div className="mt-3 text-sm leading-6 text-muted">
-                  <AnimatedMarket value={rate.market} loading={isLoading} />
+                <div className="mt-6 flex items-baseline gap-3">
+                  <span className="text-3xl font-semibold text-[rgba(31,26,20,0.95)]">
+                    <AnimatedPrice value={rate.from} loading={isLoading} />
+                  </span>
+                  {!isLoading && rate.market > 0 && (
+                    <span className="text-base text-muted line-through">
+                      {formatRub(rate.market)} ₽
+                    </span>
+                  )}
                 </div>
               </article>
             ))}
